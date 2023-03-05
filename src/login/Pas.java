@@ -49,6 +49,7 @@ public class Pas
         // Si llegamos aquí, la contraseña es válida
         return true;
     }
+    
 
     public static void main (String[] args)
     {
@@ -66,3 +67,20 @@ public class Pas
         }
     }
 }
+
+/* char[] passwordChars = txtContrasena.getPassword ();
+        String password = new String (passwordChars);
+        boolean hasUpperCase =  ! password.equals (password.toLowerCase ());
+        boolean hasLowerCase =  ! password.equals (password.toUpperCase ());
+        boolean hasNumber = password.matches (".*\\d.*");
+        boolean hasSpecialChar =  ! password.matches ("[A-Za-z0-9]*");
+        boolean hasValidLength = password.length () >= 8;
+
+        if (hasValidLength && hasUpperCase && hasLowerCase && hasNumber && hasSpecialChar)
+        {
+            txtContrasena.setForeground (Color.green);
+        } else
+        {
+            txtContrasena.setForeground (Color.red);
+        }
+    }                                  */
