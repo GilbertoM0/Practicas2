@@ -1,21 +1,79 @@
 package login;
 
+import static java.awt.Image.SCALE_DEFAULT;
+import java.io.File;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import negocio.CategoriaControl;
 
-public class FrmCategoria extends javax.swing.JInternalFrame
+public class FrmCategoria extends javax.swing.JInternalFrame    //Vista,control o negocio, datos
 {
 
-   
+    //Crear una variable para instanciar a la capa negocio o control
+    private final CategoriaControl CONTROL;
+    private String accion;
+    private File archivoImagenCategoria; //Guargar nombre de imagen categoria
+    private String nombreAnt;
+
     public FrmCategoria ()
     {
         initComponents ();
-        
+        //Inicializar control
+        CONTROL = new CategoriaControl ();//Tiene comunicacion a capa de vista
+        //Mando llamar a listar
+        listar ("");
+
         tabGeneral.setEnabledAt (1, false);
+        //Asignarle el valor Guardar a la variable accion
+        accion = "Guardar";
+        //Ocultar el txtId
+        txtId.setVisible (false);
     }
-    //Crear metodo para limpiar los controles
-    private void limpiar()
+
+    //Metodo listar para que muestre las categorias
+    private void listar (String texto)
     {
-        txtNombreCategoria.setText("");
-        txtDescripcion.setText("");
+        //Llenar el modelo del JTable de nombre tablaListado
+        tablaListado.setModel (CONTROL.listar (texto));//control que apunta a CategoriaControl que tiene . listar que es donde regresa Modelo
+
+    }
+
+    //Crear metodo para limpiar los controles
+    private void limpiar ()
+    {
+        txtNombreCategoria.setText ("");
+        txtDescripcion.setText ("");
+        txtObs.setText ("");
+        accion = "Guardar";
+        //Quitamos la imagen anterior para poder poner una nueva
+        lblImagenCategoria.setIcon (null);
+
+    }
+
+    //Metodo para agregar una imagen al label (Categoria)
+    private void dibujarCategoria (String ruta)
+    {
+        ImageIcon imagen = new ImageIcon (ruta);
+        //Convertir la imagen a un icono
+        ImageIcon icono = new ImageIcon (imagen.getImage ().getScaledInstance (lblImagenCategoria.getWidth (),
+                lblImagenCategoria.getHeight (), SCALE_DEFAULT));
+
+        lblImagenCategoria.setIcon (icono);
+        //repaint();//Dibujara el icono en la etiqueta
+
+    }
+
+    //Metodo para mostrar mensajes de error
+    private void mensajeError (String msg)
+    {
+        JOptionPane.showMessageDialog (this, msg, "Sistema de Ventanas y Compras", JOptionPane.ERROR_MESSAGE);
+    }
+
+    //Metodo para mostrar mensajes de OK
+    private void mensajeOK (String msg)
+    {
+        JOptionPane.showMessageDialog (this, msg, "Sistema de Ventanas y Compras", JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
@@ -35,17 +93,27 @@ public class FrmCategoria extends javax.swing.JInternalFrame
         btnBuscar = new javax.swing.JButton();
         btnNuevo = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaListado = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
+        btnEditar = new javax.swing.JButton();
+        btnDesactivar = new javax.swing.JButton();
+        btnActivar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         txtNombreCategoria = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        lblDescripcion = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        txtDescripcion = new javax.swing.JTextArea();
+        txtObs = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
+        lblObs = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtDescripcion = new javax.swing.JTextArea();
+        lblImagenCategoria = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        btnCargarImagen = new javax.swing.JButton();
+        txtId = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -64,6 +132,13 @@ public class FrmCategoria extends javax.swing.JInternalFrame
 
         btnBuscar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         btnNuevo.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         btnNuevo.setText("Nuevo");
@@ -75,7 +150,7 @@ public class FrmCategoria extends javax.swing.JInternalFrame
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaListado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
 
@@ -85,30 +160,66 @@ public class FrmCategoria extends javax.swing.JInternalFrame
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaListado);
 
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel2.setText("Registros");
+
+        btnEditar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnEditarActionPerformed(evt);
+            }
+        });
+
+        btnDesactivar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        btnDesactivar.setText("Desactivar");
+        btnDesactivar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnDesactivarActionPerformed(evt);
+            }
+        });
+
+        btnActivar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        btnActivar.setText("Activar");
+        btnActivar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnActivarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(58, 58, 58)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(txtCategoria)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnBuscar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnNuevo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnEditar)
+                .addGap(18, 18, 18))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(23, 23, 23)
+                .addComponent(btnDesactivar)
+                .addGap(73, 73, 73)
+                .addComponent(btnActivar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(144, 144, 144))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,12 +229,16 @@ public class FrmCategoria extends javax.swing.JInternalFrame
                     .addComponent(jLabel1)
                     .addComponent(txtCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar)
-                    .addComponent(btnNuevo))
+                    .addComponent(btnNuevo)
+                    .addComponent(btnEditar))
                 .addGap(38, 38, 38)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(btnActivar)
+                    .addComponent(btnDesactivar))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         tabGeneral.addTab("Listado", jPanel1);
@@ -131,13 +246,13 @@ public class FrmCategoria extends javax.swing.JInternalFrame
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel3.setText("Nombre de la categoria(*):");
 
-        jLabel4.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel4.setText("Descripción:");
+        lblDescripcion.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblDescripcion.setText("Descripción:");
 
-        txtDescripcion.setColumns(20);
-        txtDescripcion.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        txtDescripcion.setRows(5);
-        jScrollPane2.setViewportView(txtDescripcion);
+        txtObs.setColumns(20);
+        txtObs.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        txtObs.setRows(5);
+        jScrollPane2.setViewportView(txtObs);
 
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel5.setText("(*)Indica que el campo es obligatorio");
@@ -154,6 +269,39 @@ public class FrmCategoria extends javax.swing.JInternalFrame
 
         btnGuardar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+
+        lblObs.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblObs.setText("Observaciones:");
+
+        txtDescripcion.setColumns(20);
+        txtDescripcion.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        txtDescripcion.setRows(5);
+        jScrollPane3.setViewportView(txtDescripcion);
+
+        lblImagenCategoria.setBackground(new java.awt.Color(255, 255, 255));
+        lblImagenCategoria.setOpaque(true);
+
+        jLabel8.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel8.setText("Categoria");
+
+        btnCargarImagen.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnCargarImagen.setText("Cargar Imagen");
+        btnCargarImagen.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnCargarImagenActionPerformed(evt);
+            }
+        });
+
+        txtId.setText("txtId");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -163,42 +311,67 @@ public class FrmCategoria extends javax.swing.JInternalFrame
                 .addGap(17, 17, 17)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNombreCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                        .addComponent(btnGuardar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCancelar)
+                        .addGap(17, 17, 17))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                        .addComponent(btnGuardar)
-                                        .addGap(25, 25, 25)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnCancelar))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(94, Short.MAX_VALUE))
+                            .addComponent(lblDescripcion)
+                            .addComponent(lblObs)
+                            .addComponent(jLabel3)
+                            .addComponent(jScrollPane3)
+                            .addComponent(txtNombreCategoria)
+                            .addComponent(jScrollPane2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(btnCargarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(52, 52, 52))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblImagenCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(9, 9, 9))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addGap(66, 66, 66))))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtNombreCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5)
-                .addGap(28, 28, 28)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardar)
-                    .addComponent(btnCancelar))
-                .addContainerGap(80, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtNombreCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblDescripcion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14)
+                        .addComponent(lblObs)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblImagenCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(8, 8, 8)
+                        .addComponent(btnCargarImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnGuardar)
+                        .addComponent(btnCancelar))
+                    .addComponent(jLabel5))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         tabGeneral.addTab("Mantenimiento", jPanel2);
@@ -222,35 +395,219 @@ public class FrmCategoria extends javax.swing.JInternalFrame
         tabGeneral.setEnabledAt (0, false);
         tabGeneral.setEnabledAt (1, true);
         tabGeneral.setSelectedIndex (1);
+
+        accion = "Guardar";
+        btnGuardar.setText ("Guardar");
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCancelarActionPerformed
     {//GEN-HEADEREND:event_btnCancelarActionPerformed
-       tabGeneral.setEnabledAt (1, false);
+        tabGeneral.setEnabledAt (1, false);
         tabGeneral.setEnabledAt (0, true);
         tabGeneral.setSelectedIndex (0);
-        this.limpiar();
+        this.limpiar ();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnCargarImagenActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCargarImagenActionPerformed
+    {//GEN-HEADEREND:event_btnCargarImagenActionPerformed
+        //Crear un componente JFileChooser sirve para hacer archivos o carpetas
+        JFileChooser archivo = new JFileChooser ();
+        //Abrir ventaja de dialogo
+        int opcion = archivo.showOpenDialog (this);
+        //Verificar que el usuario presiono el usuario aceptar
+        if (opcion == JFileChooser.APPROVE_OPTION)
+        {
+            archivoImagenCategoria = archivo.getSelectedFile ();
+            //Dibujar la imagen de la categoria
+            dibujarCategoria (archivoImagenCategoria.getAbsolutePath ());
+        }
+
+        //Metodo para mostrar mensajes de error
+
+    }//GEN-LAST:event_btnCargarImagenActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnGuardarActionPerformed
+    {//GEN-HEADEREND:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+        String resp;
+        // 1. Verificar que el control tenga un nombre de categoria
+        if (txtNombreCategoria.getText ().length () == 0 || txtNombreCategoria.getText ().length () > 30)
+        {
+            mensajeError ("Debe escribir un nombre de categoria y no debe ser mayor a 30 caracteres ");
+            txtNombreCategoria.requestFocus (); // regresa el foco al control
+            return;
+        }
+
+        // 2. Verificar la variable accion
+        if (accion.equals ("Editar"))
+        {
+            // Aqui vamos a intriducir el codigo de Editar
+            resp = CONTROL.actualizar (Integer.parseInt (txtId.getText ()), txtNombreCategoria.getText (), nombreAnt, txtDescripcion.getText (),archivoImagenCategoria.getAbsolutePath(), txtObs.getText ());
+
+            if (resp.equals ("OK"))
+            {
+                mensajeOK (" Registro actualizado correctamente ");
+                // Faltó
+                limpiar ();
+                listar ("");
+                // Para que en automático me pase al TAB listado
+                tabGeneral.setSelectedIndex (0); // Se mueve al TAB CERO o primero
+                tabGeneral.setEnabledAt (1, false);  //bloquea el TAB de mantenimiento
+                tabGeneral.setEnabledAt (0, true); //Desbloquea el TAB de listado
+            } else
+            {
+                mensajeError (resp);
+            }
+        } else
+        {
+            // Vamos a colocar aqui el codigo para Guardar
+            resp = CONTROL.insertar (txtNombreCategoria.getText (), archivoImagenCategoria.getAbsolutePath (), txtDescripcion.getText (), txtObs.getText ());
+
+            if (resp.equals ("OK"))
+            {
+                mensajeOK (" Registro insertado correctamente ");
+                limpiar ();
+                listar ("");
+            } else
+            {
+                mensajeError (resp);
+            }
+
+        }
+
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnBuscarActionPerformed
+    {//GEN-HEADEREND:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnEditarActionPerformed
+    {//GEN-HEADEREND:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+        //1.Verificar que exista un registro seleccionado
+        if (tablaListado.getSelectedRowCount () == 1)//lo que tiene seleccionado los cuenta y si es igual a uno osea selecciono algo
+        {//Perfecto selecciono un registro
+            //2.Obtener del registro selecionado los datos
+            String id = String.valueOf (tablaListado.getValueAt (tablaListado.getSelectedRow (), 0));
+            String categoria = String.valueOf (tablaListado.getValueAt (tablaListado.getSelectedRow (), 1));
+            nombreAnt = String.valueOf (tablaListado.getValueAt (tablaListado.getSelectedRow (), 1));
+            String descripcion = String.valueOf (tablaListado.getValueAt (tablaListado.getSelectedRow (), 2));
+            String obs=String.valueOf ( tablaListado.getValueAt (tablaListado.getSelectedRow (), 3));
+            String estado = String.valueOf (tablaListado.getValueAt (tablaListado.getSelectedRow (), 4));
+
+            //3.Llenar los controles del formulario con las variables temporables
+            txtId.setText (id);
+            txtNombreCategoria.setText (categoria);
+            txtDescripcion.setText (descripcion);
+            txtObs.setText (obs);
+            dibujarCategoria(CONTROL.imagen (categoria));
+
+            //4. Activar el TAB o la vista de mantenimiento al usuario
+            tabGeneral.setEnabledAt (0, false);
+            tabGeneral.setEnabledAt (1, true);
+            tabGeneral.setSelectedIndex (1);
+
+            //Asignar el valor editar a la variable acion
+            accion = "Editar";
+            btnGuardar.setText ("Editar");
+        } else
+        {
+            mensajeError ("Debes seleccionar una categoria");
+        }
+
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnDesactivarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnDesactivarActionPerformed
+    {//GEN-HEADEREND:event_btnDesactivarActionPerformed
+        //1.Verificar que el usuario haya seleccionado registros
+        if (tablaListado.getSelectedRowCount () == 1)
+        {
+            //2. Obtener el iD y el nombre de la categoria
+            String id = String.valueOf (tablaListado.getValueAt (tablaListado.getSelectedRow (), 0));
+            String categoria = String.valueOf (tablaListado.getValueAt (tablaListado.getSelectedRow (), 1));
+            //3. Preguntar al usuario si realmente lo desea Desactivar
+            if (JOptionPane.showConfirmDialog (this, "Desea desactivar la categoria:" + categoria, "Desactivar", JOptionPane.YES_NO_OPTION) == 0)
+            {
+                //4.Desactivar el registro
+                String resp = CONTROL.desactivar (Integer.parseInt (id));
+                //5.Verificar respuesta
+                if (resp.equals ("OK"))
+                {
+                    mensajeOK ("Registro desactivado");
+                    //mostrar la tabla actualizada nuevamente
+                    listar ("");
+                } else
+                {
+                    mensajeError (resp);
+                }
+
+            }
+        } else
+        {
+            mensajeError ("Debes seleccionar el registro a desactivar");
+        }
+    }//GEN-LAST:event_btnDesactivarActionPerformed
+
+    private void btnActivarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnActivarActionPerformed
+    {//GEN-HEADEREND:event_btnActivarActionPerformed
+//1.Verificar que el usuario haya seleccionado registros
+        if (tablaListado.getSelectedRowCount () == 1)
+        {
+            //2. Obtener el iD y el nombre de la categoria
+            String id = String.valueOf (tablaListado.getValueAt (tablaListado.getSelectedRow (), 0));
+            String categoria = String.valueOf (tablaListado.getValueAt (tablaListado.getSelectedRow (), 1));
+            //3. Preguntar al usuario si realmente lo desea Desactivar
+            if (JOptionPane.showConfirmDialog (this, "Desea activar la categoria:" + categoria, "Activar", JOptionPane.YES_NO_OPTION) == 0)
+            {
+                //4.Desactivar el registro
+                String resp = CONTROL.activar (Integer.parseInt (id));
+                //5.Verificar respuesta
+                if (resp.equals ("OK"))
+                {
+                    mensajeOK ("Registro activado");
+                    //mostrar la tabla actualizada nuevamente
+                    listar ("");
+                } else
+                {
+                    mensajeError (resp);
+                }
+
+            }
+        } else
+        {
+            mensajeError ("Debes seleccionar el registro a activar");
+        }    }//GEN-LAST:event_btnActivarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActivar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnCargarImagen;
+    private javax.swing.JButton btnDesactivar;
+    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnNuevo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel lblDescripcion;
+    private javax.swing.JLabel lblImagenCategoria;
+    private javax.swing.JLabel lblObs;
     private javax.swing.JTabbedPane tabGeneral;
+    private javax.swing.JTable tablaListado;
     private javax.swing.JTextField txtCategoria;
     private javax.swing.JTextArea txtDescripcion;
+    private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombreCategoria;
+    private javax.swing.JTextArea txtObs;
     // End of variables declaration//GEN-END:variables
 }

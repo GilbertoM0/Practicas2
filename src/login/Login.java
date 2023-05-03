@@ -4,9 +4,14 @@
  */
 package login;
 
+import database.Conexion;
 import java.awt.Color;
+import java.util.Random;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import libreriabasica.PasswordUtils;
 import libreriabasica.Usuario;
+
 
 public class Login extends javax.swing.JFrame
 {
@@ -17,6 +22,20 @@ public class Login extends javax.swing.JFrame
     public Login ()
     {
         initComponents ();
+        //Verifico si abre la Base de Datos
+        //Conexion conn;//=new Conexion();
+        //conn.
+        Conexion.getInstancia ();
+        if(Conexion.instancia==null)
+        {
+            System.out.println("NO conectado");
+           
+        }
+        else
+        {
+             System.out.println("Conectado");
+        }
+        
     }
 
     /**
@@ -34,10 +53,12 @@ public class Login extends javax.swing.JFrame
         Login = new javax.swing.JLabel();
         IniciaS = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
         txtUsuario1 = new javax.swing.JTextField();
         txtContrasena = new javax.swing.JPasswordField();
         Btn_login = new javax.swing.JLabel();
-        lblRecordarClave = new javax.swing.JLabel();
+        CheRecordarC = new javax.swing.JLabel();
+        lblGenerarClave = new javax.swing.JLabel();
         btnCrearC = new javax.swing.JButton();
         User = new javax.swing.JLabel();
         Padlock = new javax.swing.JLabel();
@@ -70,6 +91,7 @@ public class Login extends javax.swing.JFrame
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel3.setOpaque(true);
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 50, 50));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, 130, 10));
 
         txtUsuario1.setBackground(new java.awt.Color(236, 236, 236));
         txtUsuario1.setFont(new java.awt.Font("Roboto Light", 0, 24)); // NOI18N
@@ -138,20 +160,47 @@ public class Login extends javax.swing.JFrame
             {
                 Btn_loginMouseClicked(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt)
+            {
+                Btn_loginMousePressed(evt);
+            }
         });
         jPanel2.add(Btn_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 340, 50));
 
-        lblRecordarClave.setBackground(new java.awt.Color(204, 204, 204));
-        lblRecordarClave.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
-        lblRecordarClave.setForeground(new java.awt.Color(102, 102, 102));
-        lblRecordarClave.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblRecordarClave.setText("Recordar Contraseña");
-        lblRecordarClave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel2.add(lblRecordarClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, 150, 20));
+        CheRecordarC.setBackground(new java.awt.Color(204, 204, 204));
+        CheRecordarC.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        CheRecordarC.setForeground(new java.awt.Color(102, 102, 102));
+        CheRecordarC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        CheRecordarC.setText("Recordar Contraseña");
+        CheRecordarC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        CheRecordarC.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                CheRecordarCMouseClicked(evt);
+            }
+        });
+        jPanel2.add(CheRecordarC, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 150, 20));
+
+        lblGenerarClave.setBackground(new java.awt.Color(204, 204, 204));
+        lblGenerarClave.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        lblGenerarClave.setForeground(new java.awt.Color(102, 102, 102));
+        lblGenerarClave.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblGenerarClave.setText("Generar Contraseña");
+        lblGenerarClave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblGenerarClave.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                lblGenerarClaveMouseClicked(evt);
+            }
+        });
+        jPanel2.add(lblGenerarClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 390, 150, 20));
 
         btnCrearC.setBackground(new java.awt.Color(236, 236, 236));
         btnCrearC.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
         btnCrearC.setText("Crear cuenta");
+        btnCrearC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCrearC.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -211,6 +260,7 @@ public class Login extends javax.swing.JFrame
 
     private void Btn_loginMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_Btn_loginMouseClicked
     {//GEN-HEADEREND:event_Btn_loginMouseClicked
+
         Usuario objU = new Usuario (txtUsuario1.getText ());
         if (objU.ValidarUsuario ())
         {
@@ -258,8 +308,9 @@ public class Login extends javax.swing.JFrame
         }
 
         if (txtUsuario1.getText ().isEmpty () || txtUsuario1.getText ().equals ("Nombre de usuario"))
+        {
             JOptionPane.showMessageDialog (this, "Debes escribir un  nombre", "Bienvenido al sistema...", JOptionPane.ERROR_MESSAGE);
-        else
+        } else
         {
             if (String.valueOf (txtContrasena.getPassword ()).isEmpty () || txtContrasena.getPassword ().equals ("Contrasena"))
             {
@@ -277,6 +328,20 @@ public class Login extends javax.swing.JFrame
                 JOptionPane.showMessageDialog (this, "Nombre de Usuario o Contrasena");
             }
         }
+        PasswordUtils RC = new PasswordUtils ();
+       // RC.recuperarContrasena (password);
+       // JOptionPane.showMessageDialog (this, password);
+        String contrasena = RC.recuperarContrasena (txtUsuario1.getText ());
+        if (contrasena != null)
+        {
+            txtContrasena.setText (contrasena);
+            txtContrasena.setForeground (Color.blue);
+
+        } /*else
+        {
+            JOptionPane.showMessageDialog (this, password);
+        }*/
+
     }//GEN-LAST:event_Btn_loginMouseClicked
 
     private void txtUsuario1MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_txtUsuario1MouseClicked
@@ -315,9 +380,60 @@ public class Login extends javax.swing.JFrame
     private void btnCrearCActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCrearCActionPerformed
     {//GEN-HEADEREND:event_btnCrearCActionPerformed
         CrearCuenta CC = new CrearCuenta ();
-        escritorio.add (CC);
         CC.setVisible (true);
+        dispose ();
     }//GEN-LAST:event_btnCrearCActionPerformed
+
+    private void lblGenerarClaveMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_lblGenerarClaveMouseClicked
+    {//GEN-HEADEREND:event_lblGenerarClaveMouseClicked
+        // TODO add your handling code here:
+        String mayusculas = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String minusculas = "abcdefghijklmnopqrstuvwxyz";
+        String numeros = "0123456789";
+        String especiales = "!@#$%^&*()_+-=[]{};':\"\\|,.<>/?";
+        String caracteres = mayusculas + minusculas + numeros + especiales;
+        StringBuilder contraseña = new StringBuilder ();
+        Random rnd = new Random ();
+        int longitudMinima = 8;
+
+        // Agregar una letra mayúscula
+        contraseña.append (mayusculas.charAt (rnd.nextInt (mayusculas.length ())));
+
+        // Agregar una letra minúscula
+        contraseña.append (minusculas.charAt (rnd.nextInt (minusculas.length ())));
+
+        // Agregar un número
+        contraseña.append (numeros.charAt (rnd.nextInt (numeros.length ())));
+
+        // Agregar un caracter especial
+        contraseña.append (especiales.charAt (rnd.nextInt (especiales.length ())));
+
+        // Agregar caracteres aleatorios hasta cumplir la longitud mínima
+        while (contraseña.length () < longitudMinima)
+        {
+            contraseña.append (caracteres.charAt (rnd.nextInt (caracteres.length ())));
+        }
+
+        txtContrasena.setText (contraseña.toString ());
+        System.out.println ("La contrasena es: " + contraseña.toString ());
+
+    }//GEN-LAST:event_lblGenerarClaveMouseClicked
+
+    private void Btn_loginMousePressed(java.awt.event.MouseEvent evt)//GEN-FIRST:event_Btn_loginMousePressed
+    {//GEN-HEADEREND:event_Btn_loginMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Btn_loginMousePressed
+
+    private void CheRecordarCMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_CheRecordarCMouseClicked
+    {//GEN-HEADEREND:event_CheRecordarCMouseClicked
+        // TODO add your handling code here:
+        if(txtUsuario1.getText ().equals ("Admin"))
+        {
+            txtUsuario1.setForeground (Color.blue);
+            txtContrasena.setText ("12345");
+            txtContrasena.setForeground (Color.blue);
+        }
+    }//GEN-LAST:event_CheRecordarCMouseClicked
 
     /**
      * @param args the command line arguments
@@ -366,6 +482,7 @@ public class Login extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Btn_login;
+    private javax.swing.JLabel CheRecordarC;
     private javax.swing.JLabel IniciaS;
     private javax.swing.JLabel Login;
     private javax.swing.JLabel Padlock;
@@ -377,7 +494,8 @@ public class Login extends javax.swing.JFrame
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel lblRecordarClave;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblGenerarClave;
     private javax.swing.JPasswordField txtContrasena;
     private javax.swing.JTextField txtUsuario1;
     // End of variables declaration//GEN-END:variables

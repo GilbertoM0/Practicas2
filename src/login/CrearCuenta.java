@@ -29,223 +29,223 @@ public class CrearCuenta extends javax.swing.JFrame
      */
     @SuppressWarnings ("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
-    private void initComponents()
+    private void initComponents ()
     {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        txtUsuario = new javax.swing.JTextField();
-        jSeparator2 = new javax.swing.JSeparator();
-        txtCorreo = new javax.swing.JTextField();
-        jSeparator3 = new javax.swing.JSeparator();
-        jSeparator4 = new javax.swing.JSeparator();
-        btnCrear = new javax.swing.JButton();
-        txtContrasena1 = new javax.swing.JPasswordField();
-        txtContrasena = new javax.swing.JPasswordField();
+        jPanel1 = new javax.swing.JPanel ();
+        jLabel2 = new javax.swing.JLabel ();
+        jPanel2 = new javax.swing.JPanel ();
+        jLabel4 = new javax.swing.JLabel ();
+        jLabel3 = new javax.swing.JLabel ();
+        jPanel3 = new javax.swing.JPanel ();
+        jLabel5 = new javax.swing.JLabel ();
+        jLabel1 = new javax.swing.JLabel ();
+        jSeparator1 = new javax.swing.JSeparator ();
+        txtUsuario = new javax.swing.JTextField ();
+        jSeparator2 = new javax.swing.JSeparator ();
+        txtCorreo = new javax.swing.JTextField ();
+        jSeparator3 = new javax.swing.JSeparator ();
+        jSeparator4 = new javax.swing.JSeparator ();
+        btnCrear = new javax.swing.JButton ();
+        txtContrasena1 = new javax.swing.JPasswordField ();
+        txtContrasena = new javax.swing.JPasswordField ();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation (javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setBackground (new java.awt.Color (255, 255, 255));
+        jPanel1.setLayout (new org.netbeans.lib.awtextra.AbsoluteLayout ());
 
-        jLabel2.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(93, 95, 239));
-        jLabel2.setText("Crear Cuenta");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, -1, -1));
+        jLabel2.setFont (new java.awt.Font ("Roboto", 1, 36)); // NOI18N
+        jLabel2.setForeground (new java.awt.Color (93, 95, 239));
+        jLabel2.setText ("Crear Cuenta");
+        jPanel1.add (jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints (210, 20, -1, -1));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel2.setBackground (new java.awt.Color (255, 255, 255));
+        jPanel2.setBorder (javax.swing.BorderFactory.createEtchedBorder ());
+        jPanel2.setCursor (new java.awt.Cursor (java.awt.Cursor.HAND_CURSOR));
 
-        jLabel4.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel4.setText("Login con Google");
+        jLabel4.setFont (new java.awt.Font ("Roboto", 1, 14)); // NOI18N
+        jLabel4.setForeground (new java.awt.Color (204, 204, 204));
+        jLabel4.setText ("Login con Google");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login/img/google.png"))); // NOI18N
+        jLabel3.setIcon (new javax.swing.ImageIcon (getClass ().getResource ("/login/img/google.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout (jPanel2);
+        jPanel2.setLayout (jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup (
+                jPanel2Layout.createParallelGroup (javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup (jPanel2Layout.createSequentialGroup ()
+                                .addGap (12, 12, 12)
+                                .addComponent (jLabel3)
+                                .addPreferredGap (javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent (jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap (27, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addContainerGap())
-        );
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 210, 50));
-
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        jLabel5.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jLabel5.setText("Login con Facebook");
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login/img/faceBook.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(7, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap())
+        jPanel2Layout.setVerticalGroup (
+                jPanel2Layout.createParallelGroup (javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup (jPanel2Layout.createSequentialGroup ()
+                                .addGap (14, 14, 14)
+                                .addComponent (jLabel4)
+                                .addContainerGap (javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup (javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup ()
+                                .addContainerGap (javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent (jLabel3)
+                                .addContainerGap ())
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, 200, 50));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 480, 10));
+        jPanel1.add (jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints (60, 90, 210, 50));
 
-        txtUsuario.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        txtUsuario.setForeground(new java.awt.Color(204, 204, 204));
-        txtUsuario.setText("Nombre de Usuario");
-        txtUsuario.setBorder(null);
-        txtUsuario.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
-                txtUsuarioMouseClicked(evt);
-            }
-        });
-        txtUsuario.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                txtUsuarioActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 480, -1));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 480, 10));
+        jPanel3.setBackground (new java.awt.Color (255, 255, 255));
+        jPanel3.setBorder (javax.swing.BorderFactory.createEtchedBorder ());
+        jPanel3.setCursor (new java.awt.Cursor (java.awt.Cursor.HAND_CURSOR));
 
-        txtCorreo.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        txtCorreo.setForeground(new java.awt.Color(204, 204, 204));
-        txtCorreo.setText("Correo Electronico");
-        txtCorreo.setBorder(null);
-        txtCorreo.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
-                txtCorreoMouseClicked(evt);
-            }
-        });
-        txtCorreo.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                txtCorreoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 480, -1));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 220, 10));
-        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 380, 220, 10));
+        jLabel5.setFont (new java.awt.Font ("Roboto", 1, 12)); // NOI18N
+        jLabel5.setText ("Login con Facebook");
 
-        btnCrear.setBackground(new java.awt.Color(120, 121, 241));
-        btnCrear.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        btnCrear.setForeground(new java.awt.Color(255, 255, 255));
-        btnCrear.setText("Crear Cuenta");
-        btnCrear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnCrear.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
-                btnCrearMouseClicked(evt);
-            }
-        });
-        btnCrear.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                btnCrearActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 420, 250, 50));
+        jLabel1.setIcon (new javax.swing.ImageIcon (getClass ().getResource ("/login/img/faceBook.png"))); // NOI18N
 
-        txtContrasena1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        txtContrasena1.setForeground(new java.awt.Color(204, 204, 204));
-        txtContrasena1.setText("Contrasena");
-        txtContrasena1.setBorder(null);
-        txtContrasena1.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
-                txtContrasena1MouseClicked(evt);
-            }
-        });
-        txtContrasena1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                txtContrasena1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtContrasena1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 360, 220, 20));
-
-        txtContrasena.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        txtContrasena.setForeground(new java.awt.Color(204, 204, 204));
-        txtContrasena.setText("Contrasena");
-        txtContrasena.setBorder(null);
-        txtContrasena.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
-                txtContrasenaMouseClicked(evt);
-            }
-        });
-        jPanel1.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 220, 20));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
-                .addContainerGap())
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout (jPanel3);
+        jPanel3.setLayout (jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup (
+                jPanel3Layout.createParallelGroup (javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup (jPanel3Layout.createSequentialGroup ()
+                                .addGap (8, 8, 8)
+                                .addComponent (jLabel1)
+                                .addPreferredGap (javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent (jLabel5)
+                                .addContainerGap (26, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
+        jPanel3Layout.setVerticalGroup (
+                jPanel3Layout.createParallelGroup (javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup (jPanel3Layout.createSequentialGroup ()
+                                .addGap (15, 15, 15)
+                                .addComponent (jLabel5)
+                                .addContainerGap (javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup (javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup ()
+                                .addContainerGap (7, Short.MAX_VALUE)
+                                .addComponent (jLabel1)
+                                .addContainerGap ())
         );
 
-        pack();
+        jPanel1.add (jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints (340, 90, 200, 50));
+        jPanel1.add (jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints (60, 220, 480, 10));
+
+        txtUsuario.setFont (new java.awt.Font ("Roboto", 1, 18)); // NOI18N
+        txtUsuario.setForeground (new java.awt.Color (204, 204, 204));
+        txtUsuario.setText ("Nombre de Usuario");
+        txtUsuario.setBorder (null);
+        txtUsuario.addMouseListener (new java.awt.event.MouseAdapter ()
+        {
+            public void mouseClicked (java.awt.event.MouseEvent evt)
+            {
+                txtUsuarioMouseClicked (evt);
+            }
+        });
+        txtUsuario.addActionListener (new java.awt.event.ActionListener ()
+        {
+            public void actionPerformed (java.awt.event.ActionEvent evt)
+            {
+                txtUsuarioActionPerformed (evt);
+            }
+        });
+        jPanel1.add (txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints (60, 190, 480, -1));
+        jPanel1.add (jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints (60, 290, 480, 10));
+
+        txtCorreo.setFont (new java.awt.Font ("Roboto", 1, 18)); // NOI18N
+        txtCorreo.setForeground (new java.awt.Color (204, 204, 204));
+        txtCorreo.setText ("Correo Electronico");
+        txtCorreo.setBorder (null);
+        txtCorreo.addMouseListener (new java.awt.event.MouseAdapter ()
+        {
+            public void mouseClicked (java.awt.event.MouseEvent evt)
+            {
+                txtCorreoMouseClicked (evt);
+            }
+        });
+        txtCorreo.addActionListener (new java.awt.event.ActionListener ()
+        {
+            public void actionPerformed (java.awt.event.ActionEvent evt)
+            {
+                txtCorreoActionPerformed (evt);
+            }
+        });
+        jPanel1.add (txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints (60, 260, 480, -1));
+        jPanel1.add (jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints (60, 380, 220, 10));
+        jPanel1.add (jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints (320, 380, 220, 10));
+
+        btnCrear.setBackground (new java.awt.Color (120, 121, 241));
+        btnCrear.setFont (new java.awt.Font ("Roboto", 1, 18)); // NOI18N
+        btnCrear.setForeground (new java.awt.Color (255, 255, 255));
+        btnCrear.setText ("Crear Cuenta");
+        btnCrear.setCursor (new java.awt.Cursor (java.awt.Cursor.HAND_CURSOR));
+        btnCrear.addMouseListener (new java.awt.event.MouseAdapter ()
+        {
+            public void mouseClicked (java.awt.event.MouseEvent evt)
+            {
+                btnCrearMouseClicked (evt);
+            }
+        });
+        btnCrear.addActionListener (new java.awt.event.ActionListener ()
+        {
+            public void actionPerformed (java.awt.event.ActionEvent evt)
+            {
+                btnCrearActionPerformed (evt);
+            }
+        });
+        jPanel1.add (btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints (180, 420, 250, 50));
+
+        txtContrasena1.setFont (new java.awt.Font ("Roboto", 1, 18)); // NOI18N
+        txtContrasena1.setForeground (new java.awt.Color (204, 204, 204));
+        txtContrasena1.setText ("Contrasena");
+        txtContrasena1.setBorder (null);
+        txtContrasena1.addMouseListener (new java.awt.event.MouseAdapter ()
+        {
+            public void mouseClicked (java.awt.event.MouseEvent evt)
+            {
+                txtContrasena1MouseClicked (evt);
+            }
+        });
+        txtContrasena1.addActionListener (new java.awt.event.ActionListener ()
+        {
+            public void actionPerformed (java.awt.event.ActionEvent evt)
+            {
+                txtContrasena1ActionPerformed (evt);
+            }
+        });
+        jPanel1.add (txtContrasena1, new org.netbeans.lib.awtextra.AbsoluteConstraints (320, 360, 220, 20));
+
+        txtContrasena.setFont (new java.awt.Font ("Roboto", 1, 18)); // NOI18N
+        txtContrasena.setForeground (new java.awt.Color (204, 204, 204));
+        txtContrasena.setText ("Contrasena");
+        txtContrasena.setBorder (null);
+        txtContrasena.addMouseListener (new java.awt.event.MouseAdapter ()
+        {
+            public void mouseClicked (java.awt.event.MouseEvent evt)
+            {
+                txtContrasenaMouseClicked (evt);
+            }
+        });
+        jPanel1.add (txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints (60, 360, 220, 20));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout (getContentPane ());
+        getContentPane ().setLayout (layout);
+        layout.setHorizontalGroup (
+                layout.createParallelGroup (javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup (layout.createSequentialGroup ()
+                                .addContainerGap ()
+                                .addComponent (jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
+                                .addContainerGap ())
+        );
+        layout.setVerticalGroup (
+                layout.createParallelGroup (javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent (jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
+        );
+
+        pack ();
     }// </editor-fold>                        
 
-    private void txtUsuarioMouseClicked(java.awt.event.MouseEvent evt)                                        
-    {                                            
+    private void txtUsuarioMouseClicked (java.awt.event.MouseEvent evt)
+    {
         if (txtUsuario.getText ().equals ("Nombre de Usuario"))
         {
             txtUsuario.setText ("");
@@ -256,11 +256,11 @@ public class CrearCuenta extends javax.swing.JFrame
             txtContrasena.setText ("Contrasena");
             txtContrasena.setForeground (Color.gray);
         }
-    }                                       
+    }
 
-    private void txtContrasenaMouseClicked(java.awt.event.MouseEvent evt)                                           
-    {                                               
-       if (String.valueOf (txtContrasena.getPassword ()).equals ("Contrasena"))
+    private void txtContrasenaMouseClicked (java.awt.event.MouseEvent evt)
+    {
+        if (String.valueOf (txtContrasena.getPassword ()).equals ("Contrasena"))
         {
             txtContrasena.setText ("");
             txtContrasena.setForeground (Color.black);
@@ -270,24 +270,24 @@ public class CrearCuenta extends javax.swing.JFrame
             txtUsuario.setText ("Nombre de Usuario");
             txtUsuario.setForeground (Color.gray);
         }
-    }                                          
+    }
 
-    private void txtCorreoMouseClicked(java.awt.event.MouseEvent evt)                                       
-    {                                           
-      if (txtCorreo.getText ().equals ("Correo Electronico"))
+    private void txtCorreoMouseClicked (java.awt.event.MouseEvent evt)
+    {
+        if (txtCorreo.getText ().equals ("Correo Electronico"))
         {
             txtCorreo.setText ("");
             txtCorreo.setForeground (Color.black);
         }
 
 //String txtCorr=new String(txtCorreo.getText());
-      // boolean hasSpecialChar =  ! .matches ("[A-Za-z0-9]*");
-    }                                      
+        // boolean hasSpecialChar =  ! .matches ("[A-Za-z0-9]*");
+    }
 
-    private void btnCrearMouseClicked(java.awt.event.MouseEvent evt)                                      
-    {                                          
-       char[] passwordChars = txtContrasena.getPassword ();
-       char[] passwordChars1 = txtContrasena1.getPassword ();
+    private void btnCrearMouseClicked (java.awt.event.MouseEvent evt)
+    {
+        char[] passwordChars = txtContrasena.getPassword ();
+        char[] passwordChars1 = txtContrasena1.getPassword ();
         String password = new String (passwordChars);
         String password1 = new String (passwordChars1);
         boolean hasUpperCase =  ! password.equals (password.toLowerCase ());
@@ -295,9 +295,9 @@ public class CrearCuenta extends javax.swing.JFrame
         boolean hasNumber = password.matches (".*\\d.*");
         boolean hasSpecialChar =  ! password.matches ("[A-Za-z0-9]*");
         boolean hasValidLength = password.length () >= 8;
-        boolean hasIgualC = password.equals(password1);
+        boolean hasIgualC = password.equals (password1);
 
-        if (hasValidLength && hasUpperCase && hasLowerCase && hasNumber && hasSpecialChar&&hasIgualC)
+        if (hasValidLength && hasUpperCase && hasLowerCase && hasNumber && hasSpecialChar && hasIgualC)
         {
             txtContrasena.setForeground (Color.green);
             txtContrasena1.setForeground (Color.green);
@@ -305,63 +305,70 @@ public class CrearCuenta extends javax.swing.JFrame
         {
             txtContrasena.setForeground (Color.red);
             txtContrasena1.setForeground (Color.red);
-        }    
-        
-        if(txtUsuario.getText().isEmpty()||txtUsuario.getText().equals("Nombre de Usuario"))
-            JOptionPane.showMessageDialog (this, "Debes escribir un  nombre", "Bienvenido al sistema...", JOptionPane.ERROR_MESSAGE);
-        else
-        {
-            if(String.valueOf(txtContrasena1.getPassword()).isEmpty()|| txtContrasena1.getPassword().equals("Contrasena"))
-                JOptionPane.showMessageDialog (this, "Debes escribir una contrasena");
-            if(String.valueOf(txtContrasena.getPassword()).isEmpty()|| txtContrasena.getPassword().equals("Contrasena"))
-                JOptionPane.showMessageDialog (this, "Debes escribir una contrasena");
-            else
-                if(txtUsuario.getText().equals("Admin") && String.valueOf(txtContrasena.getPassword()).equals("12345"))
-                {
-                    
-                    // System.out.println("Entrando al sistema...");
-                    FrmPrincipal frmPrincipal = new FrmPrincipal();
-                    frmPrincipal.setVisible(true);
-                    //this.setVisible (false);
-                    dispose();
-                }
-                else
-              JOptionPane.showMessageDialog (this, "Nombre de Usuario o Contrasena"); 
         }
-    }                                     
 
-    private void txtContrasena1ActionPerformed(java.awt.event.ActionEvent evt)                                               
-    {                                                   
-       if(txtContrasena==txtContrasena1)
-           txtContrasena.setForeground (Color.green);
-       else if(String.valueOf(txtContrasena.getPassword()).isEmpty()|| txtContrasena.getPassword().equals(txtContrasena1))
+        if (txtUsuario.getText ().isEmpty () || txtUsuario.getText ().equals ("Nombre de Usuario"))
+        {
+            JOptionPane.showMessageDialog (this, "Debes escribir un  nombre", "Bienvenido al sistema...", JOptionPane.ERROR_MESSAGE);
+        } else
+        {
+            if (String.valueOf (txtContrasena1.getPassword ()).isEmpty () || txtContrasena1.getPassword ().equals ("Contrasena"))
+            {
+                JOptionPane.showMessageDialog (this, "Debes escribir una contrasena");
+            }
+            if (String.valueOf (txtContrasena.getPassword ()).isEmpty () || txtContrasena.getPassword ().equals ("Contrasena"))
+            {
+                JOptionPane.showMessageDialog (this, "Debes escribir una contrasena");
+            } else if (txtUsuario.getText ().equals ("Admin") && String.valueOf (txtContrasena.getPassword ()).equals ("12345"))
+            {
+
+                // System.out.println("Entrando al sistema...");
+                FrmPrincipal frmPrincipal = new FrmPrincipal ();
+                frmPrincipal.setVisible (true);
+                //this.setVisible (false);
+                dispose ();
+            } else
+            {
+                JOptionPane.showMessageDialog (this, "Nombre de Usuario o Contrasena");
+            }
+        }
+    }
+
+    private void txtContrasena1ActionPerformed (java.awt.event.ActionEvent evt)
+    {
+        if (txtContrasena == txtContrasena1)
+        {
+            txtContrasena.setForeground (Color.green);
+        } else if (String.valueOf (txtContrasena.getPassword ()).isEmpty () || txtContrasena.getPassword ().equals (txtContrasena1))
+        {
             JOptionPane.showMessageDialog (this, "Debes escribir una contrasena igual");
-           
-    }                                              
+        }
 
-    private void btnCrearActionPerformed(java.awt.event.ActionEvent evt)                                         
-    {                                             
+    }
+
+    private void btnCrearActionPerformed (java.awt.event.ActionEvent evt)
+    {
         // TODO add your handling code here:
-    }                                        
+    }
 
-    private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt)                                          
-    {                                              
+    private void txtCorreoActionPerformed (java.awt.event.ActionEvent evt)
+    {
         // TODO add your handling code here:
-    }                                         
+    }
 
-    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt)                                           
-    {                                               
+    private void txtUsuarioActionPerformed (java.awt.event.ActionEvent evt)
+    {
         // TODO add your handling code here:
-    }                                          
+    }
 
-    private void txtContrasena1MouseClicked(java.awt.event.MouseEvent evt)                                            
-    {                                                
+    private void txtContrasena1MouseClicked (java.awt.event.MouseEvent evt)
+    {
         if (String.valueOf (txtContrasena1.getPassword ()).equals ("Contrasena"))
         {
             txtContrasena1.setText ("");
             txtContrasena1.setForeground (Color.black);
         }
-    }                                           
+    }
 
     /**
      * @param args the command line arguments
